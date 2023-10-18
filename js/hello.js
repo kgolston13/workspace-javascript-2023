@@ -8,14 +8,17 @@ var today = new Date();
 var hoursNow = today.getHours();
 
 // display the greeting message 
-// modify the code so that your code display "Good afternoon" whereas time is from 12:00pm to 6:00pm
+// modify the code so that your code displays the proper greeting for the time of day
 var greetings = "";
-if (hoursNow <= 12){
+if (hoursNow <= 11){
   greetings = "Good Morning";
-}else{
+}else if (hoursNow <= 16){
+  greetings = "Good Afternoon";
+}else if (hoursNow <= 20){
   greetings = "Good Evening";
+}else{
+  greetings = "Good Night";
 }
-
 
 // write to the document 
 document.write(greetings);

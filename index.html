@@ -23,23 +23,33 @@
             <p>
                 Please display a hello world message in JavaScript. 
                 <script>
-                    document.title = "JavaScript Basic -- In class practice -- Yilian Zhang";
+                    document.title = "JavaScript Basic -- In class practice -- Keena Golston";
                     // use document.write to display a message
-                    
+                    document.write("<p>Hello World</p>");
+                    document.writeln("<p>This is my first javascript code!</p>");
                     // use console.log to display a message   
-                  
+                    console.log("For debugging purpose only!")
                     
                 </script>
             </p>
             <p> Please import external file hello.js here. 
-                
+                <script src="js/hello.js"></script>
             </p>
         </div>
 
         <div class="practice">
             <h1> Variable and Arithemetic Operation</h1>
             <p> Practice on variables </p>
-
+            <script>
+                var x = 5;
+                var y = 6;
+                var z = x + y;
+                var a = x - y;
+                document.write("<p> The value of x is: " + x + "</p>");
+                document.write("<p> The value of y is: " + y + "</p>");
+                document.write("<p> The value of z is x + y = " + z + "</p>");
+                document.write("<p> The value of a is x - y = " + a + "</p>");
+            </script>
 
         </div>
 
