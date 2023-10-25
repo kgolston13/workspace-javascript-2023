@@ -143,7 +143,24 @@
                 </p>
 
                 <p id="message">
+                    <script>
+                        //make a function
+                        function welcome(){
+                            //debugging
+                            console.log("Welcome function is called");
+                            //get the value of the input box
+                            var name = document.getElementById("cName").value;
+                            //display the message
+                            document.getElementById("message").textContent = "Welcome " + name;
+                        }
+                        //event and the object
+                        var e1 = document.getElementById("cName");
+                        //debugging
+                        console.log(e1);
+                        //associate the event with the event handler
+                        e1.addEventListener("blur", welcome, false);
 
+                    </script>
                 </p>
 
                 <p>
@@ -158,9 +175,26 @@
         <div class="practice">
             <h1> Practice - Calculate Square</h1>
             Calculating Square:
-            <input type="text" id="num" placeholder="Type in a number"> <sup> 2 </sup> =
-            <label id="result"> ? </label>
-
+            <input type="text" id="numz" placeholder="Type in a number"> <sup> 2 </sup> =
+            <label id="result2"> ? </label>
+            <script>
+                function square (){
+                    //get input value
+                    var num = document.getElementById("numz").value;
+                    //perform calculation
+                    var result2 = num * num;
+                    //output
+                    document.getElementById("result2").textContent = result2;
+                    //debugging
+                    console.log(result2);
+                }
+                //event and the object
+                var e2 = document.getElementById("numz");
+                //debugging
+                console.log(e2);
+                //associate the event with the event handler
+                e2.addEventListener("blur", square, false);
+            </script>
         </div>
 
         <div class="practice">
@@ -173,9 +207,16 @@
 
             <input type="button" id="tryit" value="Click and Display"> 
 
-            <div id="message"> 
+            <div id="messageHTML"> 
             </div>
-
+            <script>
+                function changeHTML(){
+                    var code = document.getElementById("code").textContent;
+                    document.getElementById("messageHTML").innerHTML = code;
+                }
+                var btn = document.getElementById("tryit");
+                btn.addEventListener("click", changeHTML, false);
+            </script>
 
         </div>
 
