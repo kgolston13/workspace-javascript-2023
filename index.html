@@ -174,9 +174,9 @@
 
         <div class="practice">
             <h1> Practice - Calculate Square</h1>
-            Calculating Square:
+            <p>Calculating Square:
             <input type="text" id="numz" placeholder="Type in a number"> <sup> 2 </sup> =
-            <label id="result2"> ? </label>
+            <label id="result2"> ? </label> </p>
             <script>
                 function square (){
                     //get input value
@@ -212,6 +212,7 @@
             <script>
                 function changeHTML(){
                     var code = document.getElementById("code").textContent;
+                    console.log(code);
                     document.getElementById("messageHTML").innerHTML = code;
                 }
                 var btn = document.getElementById("tryit");
@@ -222,24 +223,52 @@
 
         <div class="practice">
             <h1>Decision statement - If </h1>
-            Honda Accord Used Car price estimate,
+            <p>Honda Accord Used Car price estimate,</p>
             <p>Please enter the year of the car
-                <select id="year">
+                <select id="caryear">
                     <option> 2003</option>
                     <option> 2004</option>
                 </select>.</p>
             <p>Please enter the condition of the car
-                <select id="condition">
+                <select id="carcondition">
                     <option> Fair</option>
                     <option> Good</option>
                 </select>.</p>
 
-            <p id="price">
-
+            <p id="carprice">
+                estimate
             </p>
 
             <script type="text/javascript">
-
+                //Event -- whenever the value changes the price will be updated
+                function carcheck(){
+                    //check the action works
+                    console.log("carprice function is called");
+                    //get the value of the year and condition
+                    var year = document.getElementById("caryear").value;
+                    var condition = document.getElementById("carcondition").value;
+                    //check the value of the year and condition
+                    console.log(year, condition);
+                    //make a decision
+                    if (year == "2003" && condition == "Fair"){
+                        document.getElementById("carprice").textContent = "The price is $2000";
+                    }
+                    else if (year == "2003" && condition == "Good"){
+                        document.getElementById("carprice").textContent = "The price is $3000";
+                    }
+                    else if (year == "2004" && condition == "Fair"){
+                        document.getElementById("carprice").textContent = "The price is $4000";
+                    }
+                    else if (year == "2004" && condition == "Good"){
+                        document.getElementById("carprice").textContent = "The price is $5000";
+                    }
+                    else {
+                        document.getElementById("carprice").textContent = "The price is $0";
+                    }
+                }
+                //register the event with the event handlers
+                document.querySelector("#caryear").addEventListener("change", carcheck, false);
+                document.querySelector("#carcondition").addEventListener("change", carcheck, false);
 
 
             </script>
@@ -252,6 +281,34 @@
                 <input type="text" id="theme">
             </p>
 
+            <script>
+                //event -- blur event handler -- change the backgroud color
+                function changebackground(){
+                    //check the action works
+                    console.log("changebackground function is called");
+                    //get the value of the theme
+                    var theme = document.getElementById("theme").value;
+                    //check the value of the theme
+                    console.log(theme);
+                    //make a decision
+                    switch(theme){
+                        case "warm":
+                            document.body.style.backgroundColor = "yellow";
+                            break;
+                        case "cool":
+                            document.body.style.backgroundColor = "blue";
+                            break;
+                        case "hot":
+                            document.body.style.backgroundColor = "red";
+                            break;
+                        default:
+                            document.body.style.backgroundColor = "white";
+                    }
+                }
+                //register the event with the event handler
+                document.querySelector("#theme").addEventListener("blur", changebackground, false);
+                
+            </script>
         </div>
 
 
@@ -275,12 +332,79 @@
 
             </p>
             <p>
-                <input type="button" value="Check Premium">
+                <input type="prebutton" value="Check Premium">
             </p>
-            <p id="result">
+            <p id="preresult">
 
             </p>
-
+            <script>
+                //event -- click event handler -- calculate the premium
+                function calculatepremium(){
+                    //check the action works
+                    console.log("calculatepremium function is called");
+                    //get the value of the coverage and age group
+                    var coverage = document.querySelector("input[name='coverage']:checked").value;
+                    var agegroup = document.getElementById("agegroup").value;
+                    //check the value of the coverage and age group
+                    console.log(coverage, agegroup);
+                    //make a decision -- switch statement -- calculate the premium based on the coverage and age group
+                    switch(coverage){
+                        case "100000":
+                            switch(agegroup){
+                                case "under 30":
+                                    document.getElementById("preresult").textContent = "The premium is $100";
+                                    break;
+                                case "30-34":
+                                    document.getElementById("preresult").textContent = "The premium is $150";
+                                    break;
+                                case "35-39":
+                                    document.getElementById("preresult").textContent = "The premium is $200";
+                                    break;
+                                case "40-44":
+                                    document.getElementById("preresult").textContent = "The premium is $250";
+                                    break;
+                                default:
+                                    document.getElementById("preresult").textContent = "The premium is $0";
+                            }
+                            break;
+                        case "200000":
+                            switch(agegroup){
+                                case "under 30":
+                                    document.getElementById("preresult").textContent = "The premium is $200";
+                                    break;
+                                case "30-34":
+                                    document.getElementById("preresult").textContent = "The premium is $250";
+                                    break;
+                                case "35-39":
+                                    document.getElementById("preresult").textContent = "The premium is $300";
+                                    break;
+                                case "40-44":
+                                    document.getElementById("preresult").textContent = "The premium is $350";
+                                    break;
+                                default:
+                                    document.getElementById("preresult").textContent = "The premium is $0";
+                            }
+                            break;
+                        case "300000":
+                            switch(agegroup){
+                                case "under 30":
+                                    document.getElementById("preresult").textContent = "The premium is $300";
+                                    break;
+                                case "30-34":
+                                    document.getElementById("preresult").textContent = "The premium is $350";
+                                    break;
+                                case "35-39":
+                                    document.getElementById("preresult").textContent = "The premium is $400";
+                                    break;
+                                case "40-44": 
+                                    document.getElementById("preresult").textContent = "The premium is $450";
+                                    break;
+                    }
+                }
+            }
+                //register the event with the event handler
+                document.querySelector("input[type='prebutton']").addEventListener("click", calculatepremium, false);
+            </script>
         </div>
 
 
