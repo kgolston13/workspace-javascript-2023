@@ -325,9 +325,12 @@
                 <select id="agegroup">
                     <option> under 30 </option>
                     <option> 30-34 </option>
-                    <option> 35-39</option>
+                    <option> 35-39 </option>
                     <option> 40-44 </option>
-
+                    <option> 45-49 </option>
+                    <option> 50-54 </option>
+                    <option> 55-59 </option>
+                    <option> 60-64 </option>
                 </select>
 
             </p>
@@ -343,64 +346,103 @@
                     //check the action works
                     console.log("calculatepremium function is called");
                     //get the value of the coverage and age group
-                    var coverage = document.querySelector("input[name='coverage']:checked").value;
+                    var coverage = parseFloat(document.querySelector("input[name='coverage']:checked").value);
                     var agegroup = document.getElementById("agegroup").value;
                     //check the value of the coverage and age group
                     console.log(coverage, agegroup);
                     //make a decision -- switch statement -- calculate the premium based on the coverage and age group
+                    var premium = 0;
+                    var base = 10;
+                    var agefactor = 0;
+                    //Building switch statement, premium = base + (agefactor * coverage)
+                    /*Monthly cost per 1000$ of coverage.
+                    Under 30 = .08$
+                    30-34 = .09$
+                    35-39 = .11$
+                    40-44 = .17$
+                    45-49 = .29$
+                    50-54 = .48$
+                    55-59 = .75$
+                    60-64 = 1.17$*/
                     switch(coverage){
                         case "100000":
                             switch(agegroup){
                                 case "under 30":
-                                    document.getElementById("preresult").textContent = "The premium is $100";
+                                    agefactor = .08;
                                     break;
                                 case "30-34":
-                                    document.getElementById("preresult").textContent = "The premium is $150";
+                                    agefactor = .09;
                                     break;
                                 case "35-39":
-                                    document.getElementById("preresult").textContent = "The premium is $200";
+                                    agefactor = .11;
                                     break;
                                 case "40-44":
-                                    document.getElementById("preresult").textContent = "The premium is $250";
+                                    agefactor = .17;
                                     break;
-                                default:
-                                    document.getElementById("preresult").textContent = "The premium is $0";
+                                case "45-49":
+                                    agefactor = .29;
+                                    break;
+                                case "50-54":
+                                    agefactor = .48;
+                                    break;
+                                case "55-59":
+                                    agefactor = .75;
+                                    break;
                             }
                             break;
                         case "200000":
                             switch(agegroup){
                                 case "under 30":
-                                    document.getElementById("preresult").textContent = "The premium is $200";
+                                    agefactor = .16;
                                     break;
                                 case "30-34":
-                                    document.getElementById("preresult").textContent = "The premium is $250";
+                                    agefactor = .18;
                                     break;
                                 case "35-39":
-                                    document.getElementById("preresult").textContent = "The premium is $300";
+                                    agefactor = .22;
                                     break;
                                 case "40-44":
-                                    document.getElementById("preresult").textContent = "The premium is $350";
+                                    agefactor = .34;
                                     break;
-                                default:
-                                    document.getElementById("preresult").textContent = "The premium is $0";
+                                case "45-49":
+                                    agefactor = .58;
+                                    break;
+                                case "50-54":
+                                    agefactor = .96;
+                                    break;
+                                case "55-59":
+                                    agefactor = 1.50;
+                                    break;
                             }
                             break;
                         case "300000":
                             switch(agegroup){
                                 case "under 30":
-                                    document.getElementById("preresult").textContent = "The premium is $300";
+                                    agefactor = .24;
                                     break;
                                 case "30-34":
-                                    document.getElementById("preresult").textContent = "The premium is $350";
+                                    agefactor = .27;
                                     break;
                                 case "35-39":
-                                    document.getElementById("preresult").textContent = "The premium is $400";
+                                    agefactor = .33;
                                     break;
-                                case "40-44": 
-                                    document.getElementById("preresult").textContent = "The premium is $450";
+                                case "40-44":
+                                    agefactor = .51;
                                     break;
+                                case "45-49":
+                                    agefactor = .87;
+                                    break;
+                                case "50-54":
+                                    agefactor = 1.44;
+                                    break;
+                                case "55-59":
+                                    agefactor = 2.25;
+                                    break;
+                            }
+                            break;
                     }
-                }
+                    //calculate the premium
+                    premium = base + (agefactor * coverage);
             }
                 //register the event with the event handler
                 document.querySelector("input[type='prebutton']").addEventListener("click", calculatepremium, false);
@@ -426,15 +468,39 @@
             <!--  Input number box -->
             <p> N = <input type="number" min="1" max="10" id="inputnumber2"> </p>
             <p>
-                <input type="button" value="Click for multiplication table">
+                <input type="button" value="Click for multiplication table" id="buttonloop2">
             </p>
 
             <!-- output section -->
-            <div id="output">
-
-
+            <div id="loooptable">
             </div>
+            <script>
+                //make a function that will generate a multiplication table
+                function maketable(){
+                    //check the action works
+                    console.log("maketable function is called");
+                    //get the value of the input box and output
+                    var num = parseInt(document.getElementById("inputnumber2").value);
+                    var output = "";
+                    output += "<table>";
+                    for(var i; i > 9; i++){
+                        output += "<tr>";
+                            //inside the loop
+                            for(var j; j >9; j++){
+                                product = i * j;
+                                output += "<td>" + i + "x" + j + "=" + product + "</td>";
+                            }
+                        output += "</tr>";
+                    }
+                    output += "</table>";
+                    console.log(output);
+                    document.getElementById("loooptable").innerHTML = output;
 
+                }
+                //register the event with the event handler
+                document.getElementById("buttonloop2").addEventListener("click", maketable, false);
+                
+            </script>
         </div>
 
 
