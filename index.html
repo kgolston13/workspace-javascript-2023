@@ -476,27 +476,24 @@
             </div>
             <script>
                 //make a function that will generate a multiplication table
-                function maketable(){
-                    //check the action works
+                function maketable() {
                     console.log("maketable function is called");
-                    //get the value of the input box and output
                     var num = parseInt(document.getElementById("inputnumber2").value);
-                    var output = "";
-                    output += "<table>";
-                    for(var i; i > 9; i++){
+                    var output = "<table>";
+                    
+                    for (var i = 1; i <= 10; i++) {
                         output += "<tr>";
-                            //inside the loop
-                            for(var j; j >9; j++){
-                                product = i * j;
-                                output += "<td>" + i + "x" + j + "=" + product + "</td>";
-                            }
+                        for (var j = 1; j <= 10; j++) {
+                            var product = i * j;
+                            output += "<td>" + i + "x" + j + "=" + product + "</td>";
+                        }
                         output += "</tr>";
                     }
+                
                     output += "</table>";
-                    console.log(output);
                     document.getElementById("loooptable").innerHTML = output;
-
                 }
+                
                 //register the event with the event handler
                 document.getElementById("buttonloop2").addEventListener("click", maketable, false);
                 
