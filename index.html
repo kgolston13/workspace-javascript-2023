@@ -522,7 +522,7 @@
         <div class="practice">
             <h1>Change Attribute -- Rolling a dice </h1>
             <p> <input type="button" id="roll" value="roll" /> </p>
-            <p> <img src="img/die1.png"> </p>
+            <p> <img src="img/die1.png" id="cubedie"> </p>
             <table>
                 <tr>
                     <th>Result</th>
@@ -543,6 +543,37 @@
                     <td id="r6"></td>
                 </tr>
             </table>
+            <script>
+                /*//practice on array
+                let testarray = [1, 2, 3, 4, 5, 6];
+                testarray.push(7);
+                testarray.push(18);
+                testarray.pop();
+                //print the array
+                console.log(testarray);
+                //print the length of the array
+                for (var i = 0; i < testarray.length; i++) {
+                    console.log(testarray[i]);
+                }*/
+
+                //
+                let statistics = [0, 0, 0, 0, 0, 0];
+                //event -- click event handler -- roll the dice
+                function rolldice(){
+                    //get random number from 1 - 6
+                    let randomnumber = Math.floor(Math.random() * 6) + 1;
+                    //change the image src attribute to match the random number
+                    document.getElementById("cubedie").src = "img/die" + randomnumber + ".png";
+                    //update the statistics
+                    statistics[randomnumber - 1]++;
+                    //update the table
+                    document.getElementById("r" + randomnumber).textContent = statistics[randomnumber - 1].toString();
+
+                }
+                //register the event with the event handler
+                document.getElementById("roll").addEventListener("click", rolldice, false);
+
+            </script>
 
         </div>
 
@@ -565,7 +596,21 @@
                 <img src="img/usca5.jpg" alt="usca">
             </div>
 			<script>
-				
+				let imagelist = document.querySelectorAll(".img-container-hide");
+                let index = 0;
+                imagelist[index].setAttribute("class","img-container-hide");
+                //change the image that is shown every 5 seconds
+
+                //funtion to change the image
+                function updatebanner(){
+                    imagelist[index].setAttribute("class","img-container-hide");
+                    index++;
+                    index = index % 5;
+                    imagelist[index].setAttribute("class","img-container");
+                }
+                //update the banner every 5 seconds
+                setInterval(updatebanner, 5000);
+
 			</script>
 
 
